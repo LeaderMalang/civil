@@ -1,0 +1,84 @@
+<html>
+    <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+</head>
+    <body>
+
+<div class="container">
+
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Sign Up </h4>
+	<p class="text-center">Get started with your free account</p>
+	
+	<form action="/insert_signup/" method="POST">
+    {% csrf_token %}
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="FIRST_NAME" class="form-control" placeholder="First Name" type="text" required>
+    </div>
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="LAST_NAME" class="form-control" placeholder="Last Name" type="text" required>
+    </div>
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <select name="TYPE" class="form-control" required>
+            <option value=""> Select Type</option>
+            <option value="1"> Safety Engineer</option>
+            <option value="0"> Designer / Civil Engr</option>
+        </select>
+    </div>
+    
+     <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="EXPERIENCE" class="form-control" placeholder="Experience in Years" type="text" required>
+    </div>
+    
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="EMAIL" class="form-control" placeholder="Email address" type="email" required>
+    </div> <!-- form-group// -->
+
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="PASSWORD" class="form-control" placeholder="Create password" type="password" required>
+    </div> <!-- form-group// -->
+                                     
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Sign Up  </button>
+    </div> <!-- form-group// -->      
+   <!-- <p class="text-center">Dont Have an account? <a href="https://mobileapi.frovey.com/">Sign Up</a> </p>               -->                                                   
+</form>
+</article>
+</div> <!-- card.// -->
+
+</div> 
+<!--container end.//-->
+
+<br><br>
+
+
+ </body>
+</html>
+

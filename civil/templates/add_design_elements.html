@@ -1,0 +1,83 @@
+{% include  "header.html" %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add Design Element</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add Design Element</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <div class="card">
+
+
+<!-- Form Start  -->  
+
+<form method="POST" action="/insert_design_elements/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<div class="card-body">
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="row">
+<div class="col-md-8">
+<div class="form-group">
+<label>Design Element Name </label>
+<input class="form-control" name="DesignElementName" Placeholder="Enter Design Element Name Here" required>
+</div>
+</div>
+<div class="col-md-2">
+<div class="form-group">
+    <label>Submit</label>
+    </br>
+<button type="submit" class="btn btn-primary text-uppercase shadow-sm">Submit</button>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</form>
+               
+
+           
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+{% include  "footer.html" %}

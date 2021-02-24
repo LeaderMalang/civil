@@ -1,0 +1,152 @@
+{% include  "header.html" %}
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>View Hazards</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">View Hazards</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+
+ <div class="card-body">
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<form action="/search_hazards/" method="POST">
+{% csrf_token %}
+<div class="mb-3">
+<div class="row">
+
+<div class="col-md-5">
+<div class="form-group">
+<label> Design Elements :</label>
+<label>{{DesignElement}}</label>
+</div>
+</div>
+<div class="col-md-5">
+<div class="form-group">
+<label> Activities :</label>
+<label>{{Activity}}</label>
+</div>
+</div>
+<div class="col-md-5">
+<div class="form-group">
+<label> Design Elements </label>
+<select class="form-control" name="DesignElement" id="DesignElement" required>
+<option value=""> -- Select Design Element -- </option>
+{% for wr in records %}
+    <option value="{{wr.id}}">{{wr.name}}</option>
+{% endfor %}
+
+</select>
+</div>
+</div>
+<div class="col-md-5">
+<div class="form-group">
+<label> Activities </label>
+<select class="form-control" name="Activity" id="Activity" required>
+<option value=""> -- Select Activity -- </option>
+
+</select>
+</div>
+</div>
+<div class="col-md-2">
+<div class="form-group">
+<label>Search</label>
+<button class="form-control btn btn-success"> Search </button>
+</div>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<table class="table table-hover text-nowrap">
+<thead>
+<tr>
+<th>ID</th>
+<th>Hazards Name</th>
+<th>Probility</th>
+<th>Severity</th>
+<th>Risk</th>
+<th>Control Measure</th>
+<th>Add Values</th>
+</tr>
+</thead>
+<tbody>
+{% for t in hazards_records|dictsortreversed:"risk" %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{t.hazard_name}}</td>
+<td>{{t.probility|floatformat:1}}</td>
+<td>{{t.severity|floatformat:1}}</td>
+
+
+{% if t.risk > 0 and t.risk <= 25 %}
+ <td style='background-color:green'>{{t.risk|floatformat:1}}</td>
+ {% elif t.risk > 25 and t.risk <= 50 %}
+ <td style='background-color:yellow'>{{t.risk|floatformat:1}}</td>
+{% elif t.risk > 50 and t.risk <= 75 %}
+ <td style='background-color:orange'>{{t.risk|floatformat:1}}</td>
+{% elif t.risk > 75 and t.risk <= 100 %}
+ <td style='background-color:red'>{{t.risk|floatformat:1}}</td>
+{% endif %}
+
+<td>{% autoescape off %} {{t.control_measure}} {% endautoescape %}</td>
+<td><a href="/add_hazards/?name={{t.hazard_permalink}}&&activity_id={{t.activity_id}}" target="_blank"><button class="btn btn-success"> Add Values </button></a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+            </div>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#DesignElement").change(function () {
+     
+      var DesignElement =  $("#DesignElement").val();  
+        //alert(DesignElement);
+      $.ajax({                       
+        url: 'https://nabeel.zensoltechs.com/ajax/load-activities/',                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'DesignElement': DesignElement       
+        },
+        success: function (data) {   
+            //alert(data);
+          $("#Activity").html(data);  
+        }
+      });
+
+    });
+  </script>
+{% include  "footer.html" %}

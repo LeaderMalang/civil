@@ -1,0 +1,200 @@
+{% include  "header.html" %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Edit Column / Editorial</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Edit Column / Editorial</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Column / Editorial Details </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summery Details </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#gallery" data-toggle="tab">Comments </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tonality" data-toggle="tab">Tonality </a></li>
+                </ul>
+              </div>
+              <!-- /.card-header -->
+<!-- Form Start  -->
+<form action="/thenation/save_update_article" method="POST">
+{% csrf_token %}
+<input type="hidden" name="col_id" value="{{col_id}}">
+<input type="hidden" name="col_media_url" value="{{col_media}}">
+{% for t in records %}
+<div class="card-body">
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="row">
+<div class="col-md-9">
+<div class="form-group">
+<label>Heading</label>
+<input class="form-control" placeholder="Enter Column / Editorial Heading Here" name="col_heading" value="{{t.title}}" required>
+</div>
+</div>
+<div class="col-md-3">
+<div class="form-group">
+<label>Type</label>
+<input class="form-control" name="col_type" value="{{t.columntype}}" required readonly>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="form-group">
+<label>Writer</label>
+<input class="form-control" name="col_writer" value="{{t.columnwriter}}" required readonly>
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<label>Media</label>
+<input class="form-control" name="col_media" value="{{t.medianame}}" required readonly>
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<label>Date</label>
+<input class="form-control" name="col_date" value="{{t.datecolumn}}" required readonly>
+</div>
+</div>
+</div>
+<label>Details</label>
+<textarea class="textarea" name="col_details" placeholder="Enter Column / Editorial Details Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{t.text}}</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End  Topic Details Section -->
+
+<!-- Start Content Details Section -->
+<div class="tab-pane" id="timeline">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="form-group">
+<label>Summery Details</label>
+<textarea class="textarea" name="col_summery" placeholder="Enter Summery Details Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{t.summery}}</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End Content Details Section --> 
+
+<div class="tab-pane" id="gallery">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="form-group">
+<label>Comments</label>
+<textarea class="textarea" name="col_gist" placeholder="Enter Comments Here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{t.gist}}</textarea>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="tab-pane" id="tonality">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="form-group">
+<label>Tonality</label>
+<div class="form-group">
+{% if t.tonality|length > 0 %}
+<div class="custom-control custom-radio">
+<input class="custom-control-input" type="radio" id="customRadio0" name="tonality" value="{{ t.tonality }}" checked="">
+<label for="customRadio0" class="custom-control-label">{{ t.tonality }}</label>
+</div>
+{% endif %}
+
+{% if t.tonality != 'Positive' %}
+<div class="custom-control custom-radio">
+<input class="custom-control-input" type="radio" id="customRadio1" name="tonality" value="Positive">
+<label for="customRadio1" class="custom-control-label">Positive</label>
+</div>
+{% endif %}
+
+  {% if t.tonality != 'Negative' %}
+<div class="custom-control custom-radio">
+<input class="custom-control-input" type="radio" id="customRadio2" value="Negative" name="tonality">
+<label for="customRadio2" class="custom-control-label">Negative</label>
+</div>
+{% endif %}
+
+    {% if t.tonality != 'Objective' %}
+<div class="custom-control custom-radio">
+<input class="custom-control-input" type="radio" id="customRadio3" value="Objective" name="tonality" >
+<label for="customRadio3" class="custom-control-label">Objective</label>
+</div>
+{% endif %}
+
+</div>
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-primary float-right text-uppercase shadow-sm">Submit</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Profile Details Section --> 
+
+ {% endfor %}
+</form>
+<!-- Form End  -->                 
+               
+
+
+</div>
+<!-- /.tab-content -->
+</div><!-- /.card-body -->
+</div>
+<!-- /.nav-tabs-custom -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+
+{% include  "footer.html" %}
+

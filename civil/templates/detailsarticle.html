@@ -1,0 +1,159 @@
+{% include  "header.html" %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Column / Editorial Details</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Column / Editorial Details</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Column / Editorial Details </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Summery Details </a></li>
+                  <li class="nav-item"><a class="nav-link" href="#gallery" data-toggle="tab"> Comments </a></li>
+                </ul>
+              </div><!-- /.card-header -->
+
+
+<!-- Form Start  -->
+
+{% for t in records %}
+<div class="card-body">
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="row">
+<div class="col-md-8">
+<div class="form-group">
+<label>Heading</label>
+<h1>{% autoescape off %}{{t.title}}{% endautoescape %}</h1>
+</div>
+</div>
+<div class="col-md-2">
+<div class="form-group">
+<label>Type</label>
+<p>{% autoescape off %}{{t.columntype}}{% endautoescape %}</p>
+</div>
+</div>
+<div class="col-md-2">
+<div class="form-group">
+<label>Tonality</label>
+<p>{{t.tonality}}</p>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="form-group">
+<label>Writer</label>
+<p>{% autoescape off %}{{t.columnwriter}}{% endautoescape %}</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<label>Media</label>
+<p>{% autoescape off %}{{t.medianame}}{% endautoescape %}</p>
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<label>Date</label>
+<p>{% autoescape off %}{{t.datecolumn}}{% endautoescape %}</p>
+</div>
+</div>
+</div>
+<label>Details</label>
+<p>{% autoescape off %}{{t.text}}{% endautoescape %}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End  Topic Details Section -->
+
+
+
+<!-- Start Content Details Section -->
+
+<div class="tab-pane" id="timeline">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="form-group">
+<label>Summery Details</label>
+<p>{% autoescape off %}{{t.summery}}{% endautoescape %}</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End Content Details Section -->
+
+<div class="tab-pane" id="gallery">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="form-group">
+<label>Comments</label>
+<p>{% autoescape off %}{{t.gist}}{% endautoescape %}</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- End Profile Details Section -->
+
+ {% endfor %}
+
+<!-- Form End  -->
+
+
+
+</div>
+<!-- /.tab-content -->
+</div><!-- /.card-body -->
+</div>
+<!-- /.nav-tabs-custom -->
+</div>
+<!-- /.col -->
+</div>
+<!-- /.row -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+
+{% include  "footer.html" %}
+

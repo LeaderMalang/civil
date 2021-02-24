@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Search Keyword</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Search Keyword</h4>
+    <p class="text-center">Enter any keyword and Search </p><p class="text-center">How Many Times in Column</p>
+	
+	<form method="POST" action="/searchkeyword">
+	    {% csrf_token %}
+
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-search"></i> </span>
+		</div>
+        <input class="form-control" name="Keyword" placeholder="Enter Keyword" type="text" required>
+    </div> 
+                                     
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Search Keyword </button>
+    </div> 
+
+</form>
+</article>
+</div>
+    <h3>About {{results|length}} results of '{{searched_word}}'</h3>
+
+{% for i in results %}
+    <div class="row">
+       <p>{{ i }}</p>
+    </div>
+{% endfor %}
+</div> 
+
+<br><br>
+
+
+
+ </body>
+</html>

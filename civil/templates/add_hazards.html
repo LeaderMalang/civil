@@ -1,0 +1,194 @@
+{% include  "header.html" %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Add Hazard</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Add Hazard</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <div class="card">
+
+
+<!-- Form Start  -->  
+
+<form method="POST" action="/insert_hazard/">
+    {% csrf_token %}
+
+   <div class="card-body">
+<div class="tab-content">
+<div class="active tab-pane" id="activity">
+<div class="row">
+<div class="col-md-12">
+<div class="card-header"></div>
+<div class="card-body pad">
+<div class="mb-3">
+<div class="row">
+<div class="col-md-4">
+<div class="form-group">
+<input value="{{ request.session.userid }}" name="UserId" type="hidden" >    
+<input value="{{ hazard_name }}" name="HazardName" type="hidden" >
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<input value="{{ activity_id }}" name="Activity" type="hidden" >
+</div>
+</div>
+<div class="col-md-4">
+<div class="form-group">
+<input value="{{ hazard_permalink }}" name="hazard_permalink" type="hidden">
+</div>
+</div>
+</div>  
+<div class="row">
+<div class="col-md-3">
+<div class="form-group">
+<label> Hazard Name : {{ hazard_name }}</label>
+</div>
+</div>
+<div class="col-md-3">
+<div class="form-group">
+<label>Average Probility  : {{ probility|floatformat:1 }}</label>
+</div>
+</div>
+<div class="col-md-3">
+<div class="form-group">
+<label>Average Severity : {{ severity|floatformat:1 }} </label>
+</div>
+</div>
+<div class="col-md-3">
+<div class="form-group">
+<label>Average Risk : {{ risk|floatformat:1 }} </label>
+</div>
+</div>
+</div>    
+<div class="row">
+<div class="col-md-6">
+<div class="form-group">
+<label>Probability Scale </label>
+<table>
+<tr><th>Score</th><th>Description</th></tr>
+<tr><td>0</td><td>Impossible</td></tr>
+<tr><td>1</td><td>Negligible</td></tr>
+<tr><td>2</td><td>50 Years</td></tr>
+<tr><td>3</td><td>10 Years</td></tr>
+<tr><td>4</td><td>5 Years</td></tr>
+<tr><td>5</td><td>1 Year</td></tr>
+<tr><td>6</td><td>6 Months</td></tr>
+<tr><td>7</td><td>1 Month</td></tr>
+<tr><td>8</td><td>1 Week</td></tr>
+<tr><td>9</td><td>1 Day</td></tr>
+<tr><td>10</td><td>1 Hour</td></tr>
+</table>
+</br>
+<label>Probability</label>
+<select id="Probility" class="form-control" name="Probility" required>
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+
+</select>
+
+</div>
+</div>
+<div class="col-md-6">
+<div class="form-group">
+<label>Severity Scale </label>
+<table>
+<tr><th>Score</th><th>Description</th></tr>
+<tr><td>0</td><td>Negligible</td></tr>
+<tr><td>1</td><td>Temporary Discomfort</td></tr>
+<tr><td>2</td><td>Persistent Discomfort</td></tr>
+<tr><td>3</td><td>Temporary Pain</td></tr>
+<tr><td>4</td><td>Permanent Pain</td></tr>
+<tr><td>5</td><td>Minor First Aid</td></tr>
+<tr><td>6</td><td>Major First Aid</td></tr>
+<tr><td>7</td><td>Medical Case</td></tr>
+<tr><td>8</td><td>Lost Work Time</td></tr>
+<tr><td>9</td><td>Permanent Disablement</td></tr>
+<tr><td>10</td><td>Fatality</td></tr>
+</table>
+
+
+
+    </br>
+<label>Severity</label>
+<select class="form-control" id="Severity" name="Severity" required>
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+</select>
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<textarea class="textarea" name="ControlMeasure" required>{{control_measure}}</textarea>
+</div>
+</div>
+<div class="col-md-2">
+<div class="form-group">
+<button type="submit" class="btn btn-primary text-uppercase shadow-sm">Submit</button>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</form>
+               
+
+           
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+{% include  "footer.html" %}

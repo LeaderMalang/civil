@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Search Keyword</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+</head>
+<body>
+<div class="container">
+<div class="card bg-light">
+<article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">Columns List</h4>
+</article>
+
+  <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+                <table class="table table-bordered">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th>Media Name</th>
+                        <th>Writer</th>
+                        <th>Date</th>
+                        <th>Heading</th>
+                        <th>Column Details</th>
+                    </tr>
+                    </thead>
+                    {% for t in records %}
+                    <tr>
+                         <td>{{t.medianame}}</td>
+                        <td>{{t.columnwriter}}</td>
+                        <td>{{t.datecolumn}}</td>
+                        <td>{{t.title}}</td>
+                        <td>{{t.text}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+</div>
+
+</div>
+
+<br><br>
+
+
+
+ </body>
+</html>

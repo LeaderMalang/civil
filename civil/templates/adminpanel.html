@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The History| Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <!--
+
+  {% load static %}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.components.min.css" integrity="sha256-l2GRX/afRXZc7/V5Klsp5z8vsGDutA8xk8XFgLusncs=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.components.min.css" integrity="sha256-l2GRX/afRXZc7/V5Klsp5z8vsGDutA8xk8XFgLusncs=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.core.min.css" integrity="sha256-lSNXePBw0mKj7BC6XP310SbSjd1yhKY+80+a9cScPk0=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.extra-components.min.css" integrity="sha256-ebkI8D0jsaqxzlH6JO9U1xeOPVPNvbIegMHEsBWNC64=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.pages.min.css" integrity="sha256-P1H/qaD8TPOLYYEupdi7hzZH/TM8w0PuCP/iIHBkQZc=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/alt/adminlte.plugins.min.css" integrity="sha256-chLDJ9ZYCYIhuNMmb+DaT9zdLPVKqfBffUNw9vjvL74=" crossorigin="anonymous" />
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../../index3.html" class="brand-link">
+      <img src="../../dist/img/AdminLTELogo.png"
+           alt="AdminLTE Logo"
+           class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">The History</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">User</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="/logout" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>Logut<i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Advanced Form</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"> Add Article </li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- SELECT2 EXAMPLE -->
+        <div class="card card-default">
+          <div class="card-header">
+            <h3 class="card-title"> Add Article </h3>
+
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <div class="card card-outline card-info">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Topic Name</label>
+                  <input class="form-control" placeholder="Enter Topic Name Here" name="topicname">
+                </div>
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>ERA ( From - To ) </label>
+                  <div class="row">
+                     <div class="col-md-6">
+                       <input class="form-control" name="datefrom" type="date" style="width: 100%;">
+                     </div>
+                     <div class="col-md-6">
+                       <input class="form-control" name="dateto" type="date" style="width: 100%;">
+                     </div>
+                  </div>
+
+
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+             <div class="col-md-6">
+                <div class="form-group">
+                  <label>Upload Image</label>
+                  <input class="form-control" type="file" name="filename">
+                </div>
+                <!-- /.form-group -->
+                <div class="form-group">
+                  <label>Keywords</label>
+
+                       <input class="form-control" name="keywords" placeholder="Enter Keywords Here" style="width: 100%;">
+
+                  </div>
+
+
+                </div>
+                <!-- /.form-group -->
+              </div>
+              <!-- /.col -->
+            </div>
+            </div>
+            <!-- /.row -->
+             <div class="card-body">
+            <h5> Topic Details </h5>
+          <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+          <textarea style="height:250px;width:100%" placeholder="Enter Topic Details Here"></textarea>
+          </div>
+        </div>
+        <!-- /.col-->
+      </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.5
+    </div>
+    <strong>Copyright &copy; 2020-2021 <a href="">ISPR</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/adminlte.min.js" integrity="sha256-qgEvQZWPqqD1J5uCoPAsOZ7kzPmcFpS1AHIU7mowcAE=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/demo.min.js" integrity="sha256-gv3WAOq1lCzyJJF/MEYpFx3DgSMOR5am/g1Eszv2kWw=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/pages/dashboard.min.js" integrity="sha256-w1d5fsR43VC5+e/VdNTbGwmYbUgc9kYrMTQqEylYnTQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/pages/dashboard2.min.js" integrity="sha256-BBngrpoUyHrPxxREYz7RwZ9uteq0OdpiaN3IsnpMd8A=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/js/pages/dashboard3.min.js" integrity="sha256-bf6XNqDnwX4g6QZx934mr8BFaRNtjY2Vs88YsjZi9QY=" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote()
+  })
+</script>
+</body>
+</html>

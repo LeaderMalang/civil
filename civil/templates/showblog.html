@@ -1,0 +1,45 @@
+{% load static %}
+{% for t in records %}
+<!DOCTYPE html>
+<br lang="en" xmlns="">
+<head>
+  <title>{% autoescape off %}{{t.TOPIC_NAME}}{% endautoescape %}</title>
+<link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Tempusdominus Bbootstrap 4 -->
+<link rel="stylesheet" href="{% static 'plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+<!-- iCheck -->
+<link rel="stylesheet" href="{% static 'plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+<!-- JQVMap -->
+<link rel="stylesheet" href="{% static 'plugins/jqvmap/jqvmap.min.css' %}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{% static 'plugins/daterangepicker/daterangepicker.css' %}">
+<!-- summernote -->
+<link rel="stylesheet" href="{% static 'plugins/summernote/summernote-bs4.css' %}">
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<div class="row" style="margin-left: 150px;">
+	<div class="col-md-3">
+	{% autoescape off %}{{t.PROFILE_DETAILS}}{% endautoescape %}
+	</div>
+	<div class="col-md-9">
+	{% autoescape off %}{{t.TOPIC_DETAILS}}{% endautoescape %}
+	</br>
+	{% autoescape off %}{{t.CONTENT_DETAILS}}{% endautoescape %}
+	</div>
+
+</div>
+
+
+
+</body>
+</html>
+	{% endfor %}

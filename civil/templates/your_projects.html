@@ -1,0 +1,72 @@
+{% include  "header.html" %}
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Your Projects Dashboard</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active"> Your Projects Dashboard</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+<!-- Main content -->
+<section class="content">
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+<div class="card-header">
+<h3 class="card-title">Your ALL Projects</h3>
+  <a href="/add_project" ><button class="btn btn-success" style="float: right;">  Add New Project </button></a>
+</div>
+<!-- /.card-header -->
+<div class="card-body table-responsive p-0">
+<table class="table table-hover">
+<thead>
+<tr>
+<th>ID</th>
+<th>Project Name </th>
+<th>Location </th>
+<th>Budget </th>
+<th>Details / Delete</th>
+</tr>
+</thead>
+<tbody>
+{% for t in records %}
+<tr>
+<td>{{ forloop.counter }}</td>
+<td>{{t.name}}</td>
+<td>{{t.location}}</td>
+<td>{{t.budget}}</td>
+<td>
+  <a href="/view_detail_project/?id={{t.id}}"><button class="btn btn-warning"> Project Details </button></a>
+  <a href="/delete_project/?id={{t.id}}&userid={{t.modifier_id}}"><button class="btn btn-danger" onclick="return confirm('Are you sure? ');" > Delete </button></a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+</div>
+</div>
+<!-- End  Topic Details Section -->
+
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+{% include  "footer.html" %}
